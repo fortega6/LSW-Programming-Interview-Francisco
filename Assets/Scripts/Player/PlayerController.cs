@@ -21,4 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         _movementInput = value.ReadValue<Vector2>();
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("OnTriggerEnter2D");
+        //if (other.tag == "WayPoint")
+            //
+    }
 }

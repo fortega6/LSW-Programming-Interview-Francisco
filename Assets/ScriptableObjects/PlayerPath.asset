@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120f135aebac0ef4ca3344bf8d0eef3a, type: 3}
-  m_Name: ClothingStoreEntraceFromRight
+  m_Script: {fileID: 11500000, guid: 84a40f3c2b9fb7a4bbba25d56400e101, type: 3}
+  m_Name: PlayerPath
   m_EditorClassIdentifier: 
+  levelEntrance: {fileID: 0}

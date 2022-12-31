@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4338557423068931513}
   - component: {fileID: 4338557423068931514}
   - component: {fileID: 4701285815177979728}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6405ed3b7776440b1192b50c62b447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitPoint: {fileID: 0}
+  exitPoint: {fileID: 55639445476877799, guid: a1e5313104013e64594648cd578f7a52, type: 3}
   wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7562708840856078445, guid: df41626dc0553274d9820f86e7b0e007, type: 3}
+  - {fileID: 619491574311329563, guid: 65dd8f6a170a3be4ba465f5d3da05d75, type: 3}
 --- !u!1 &4338557423307599288
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338557423307599291}
   - component: {fileID: 4338557423307599290}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}

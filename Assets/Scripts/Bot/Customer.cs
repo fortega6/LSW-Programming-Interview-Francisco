@@ -1,14 +1,19 @@
 using UnityEngine;
 
-public class CustomerIA : MonoBehaviour
+public class Customer : MonoBehaviour
 {
     public Transform exitPoint;
-    public Transform [] wayPoints;
+    public Transform[] wayPoints;
 
     private float navigationUpdate;
     private Animator anim;
     private Rigidbody2D rb;
     private int target = 0;
+    public int Target
+    {
+        get { return target; }
+        set { target = value; }
+    }
     private Transform enemy;
     private Collider2D enemyCollider;
     private float navigationTime = 0;
@@ -44,7 +49,6 @@ public class CustomerIA : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter2D");
         if (other.tag == "WayPoint")
             target += 1;
     }

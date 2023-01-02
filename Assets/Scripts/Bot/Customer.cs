@@ -3,53 +3,65 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     public Transform exitPoint;
-    public Transform[] wayPoints;
+    public WayPoint[] wayPoints;
 
-    private float navigationUpdate;
+    public float navigationUpdate;
     private Animator anim;
     private Rigidbody2D rb;
-    private int target = 0;
-    public int Target
-    {
-        get { return target; }
-        set { target = value; }
-    }
-    private Transform enemy;
-    private Collider2D enemyCollider;
-    private float navigationTime = 0;
+    private int _target = 0;
+
+    public Vector3 Movement { get => _movement; set => _movement = value; }
+    public int Target { get => _target; set => _target = value; }
+
+    private float _navigationTime = 0;
+    private float _timeElapsed = 0;
+    private Vector3 _movement;
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
+        _movement = (wayPoints[_target].transform.position - transform.position).normalized;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        _timeElapsed += Time.fixedDeltaTime;
+        if (_target > 0 && _target < wayPoints.Length && _timeElapsed < wayPoints[_target-1].wayTime)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         if (wayPoints != null)
         {
-            navigationTime += Time.deltaTime;
-            if (navigationTime > navigationUpdate)
+            _navigationTime += Time.fixedDeltaTime;
+            if (_navigationTime > navigationUpdate)
             {
-                if (target < wayPoints.Length)
+                if (_target < wayPoints.Length)
                 {
-                    //rb.MovePosition(transform.position + wayPoints[target].position * Time.fixedDeltaTime * navigationTime);
-                    enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, 0.8f * navigationTime);
+                    rb.velocity = _movement * _navigationTime;
                 }
                 else
                 {
-                    enemy.position = Vector2.MoveTowards(enemy.position, exitPoint.position, 0.8f * navigationTime);
-                    //rb.MovePosition(transform.position + wayPoints[target].position * Time.fixedDeltaTime * navigationTime);
+                    rb.velocity = _movement * _navigationTime;
                 }
-                navigationTime = 0;
+                _navigationTime = 0;
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "WayPoint")
-            target += 1;
+        if (other.tag == "WayPoint") {
+            _target += 1;
+            _timeElapsed = 0;
+            if (_target < wayPoints.Length)
+                _movement = (wayPoints[_target].transform.position - wayPoints[_target-1].transform.position).normalized;
+            else
+                _movement = (exitPoint.position - wayPoints[_target-1].transform.position).normalized;
+        }
     }
 }

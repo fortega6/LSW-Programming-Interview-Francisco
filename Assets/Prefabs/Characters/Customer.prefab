@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4338557423068931513}
   - component: {fileID: 4338557423068931514}
   - component: {fileID: 4701285815177979728}
+  - component: {fileID: 3096550903669737538}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -177,6 +178,21 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 7562708840856078445, guid: df41626dc0553274d9820f86e7b0e007, type: 3}
   - {fileID: 619491574311329563, guid: 65dd8f6a170a3be4ba465f5d3da05d75, type: 3}
+  navigationUpdate: 1
+--- !u!114 &3096550903669737538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4338557423068931510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5cadda383ba3448bf8e7b0f4c9a182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4338557423068931514}
+  rb: {fileID: 4338557423068931513}
 --- !u!1 &4338557423307599288
 GameObject:
   m_ObjectHideFlags: 0

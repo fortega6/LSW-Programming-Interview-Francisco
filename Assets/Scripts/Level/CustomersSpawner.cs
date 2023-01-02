@@ -14,24 +14,22 @@ public class CustomersSpawner : MonoBehaviour
     {
 
         StartCoroutine(Spawn());
-        //player.transform.parent = playerParent.transform;
-        //this.followCamera.Follow = player.transform;
-
-        // When player is instantiated and moved, reset path
-        //playerPath.levelEntrance = null;
     }
 
     private IEnumerator Spawn()
     {
         LevelEntrance levelEntrance = levelEntrances[Random.Range(0, levelEntrances.Length)];
         Customer player = customerPooling.GetEnemyFromPool().GetComponent<Customer>();
+
         player.Target = 0;
         player.wayPoints = levelEntrance.GetRandomPath();
         Transform entrance = GetLevelEntrance(levelEntrance.entrance);
-
         player.transform.position = levelEntrance.transform.position;
+        player.Movement = (player.wayPoints[0].transform.position - levelEntrance.transform.position).normalized;
+        player.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(waitingTime);
-        StartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
     }
 
     private Transform GetLevelEntrance(LevelEntranceSO playerEntrance)

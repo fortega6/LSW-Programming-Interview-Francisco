@@ -49,7 +49,7 @@ public class CustomerPooling : MonoBehaviour
         }
 
         //enemy.transform.position = this.transform.position;
-        enemy.SetActive(true);
+        
         return enemy;
     }
 }

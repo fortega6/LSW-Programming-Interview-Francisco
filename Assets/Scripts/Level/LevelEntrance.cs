@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class WayPoint
+{
+    public Transform transform;
+    public int wayTime = 1;
+}
+
 public class LevelEntrance : MonoBehaviour
 {
     public LevelEntranceSO entrance;
@@ -8,7 +15,7 @@ public class LevelEntrance : MonoBehaviour
     [System.Serializable]
     public class Path
     {
-        public Transform[] wayPoints;
+        public WayPoint[] wayPoints;
     }
 
     [System.Serializable]
@@ -19,7 +26,7 @@ public class LevelEntrance : MonoBehaviour
 
     public PathList listOfPathLists;
 
-    public Transform[] GetRandomPath()
+    public WayPoint[] GetRandomPath()
     {
         return listOfPathLists.paths[Random.Range(0, listOfPathLists.paths.Length)].wayPoints;
     }

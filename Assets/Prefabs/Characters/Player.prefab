@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4338557423068931512
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +216,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e37666f2-1631-48f8-9821-b83c538ebf4c
     m_ActionName: PlayerControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 34057784-c301-4514-a203-fc83eb5b185a
+    m_ActionName: PlayerControls/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls

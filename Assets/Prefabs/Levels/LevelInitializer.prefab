@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8920108618437374710}
   - component: {fileID: 8920108618437374711}
   - component: {fileID: 8920108618437374708}
+  - component: {fileID: 925289217}
   m_Layer: 0
   m_Name: LevelInitializer
   m_TagString: Untagged
@@ -77,13 +78,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbb7647c35b89c4faff473819135054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneDependencies: []
+  sceneDependencies:
+  - {fileID: 11400000, guid: 6e90a549319f75549bbc8190f2b1fb7e, type: 2}
   onDependenciesLoaded:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8920108618437374708}
         m_TargetAssemblyTypeName: PlayerSpawner, Assembly-CSharp
         m_MethodName: InstantiatePlayerOnLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 925289217}
+        m_TargetAssemblyTypeName: CustomersSpawner, Assembly-CSharp
+        m_MethodName: InstantiateCustomerOnLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -105,6 +119,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce8d72169cc26b4bb40cb4fa4f1300b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPath: {fileID: 11400000, guid: 2e10f4456863f024698e4360a4f2fb83, type: 2}
+  playerPath: {fileID: 11400000, guid: 4eaf72f30697913428f71412daab2bd0, type: 2}
   playerPrefab: {fileID: 4338557423068931510, guid: 24af6ab65a2543245b3b6746d963a5cf, type: 3}
   playerParent: {fileID: 0}
+--- !u!114 &925289217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920108618437374709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a442cee19f97547805c8a8fb8d6428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerList:
+  - {fileID: 4701285815177979728, guid: 969bfaa72ebc0d64297a8d12d6a37ef1, type: 3}
+  customerPooling: {fileID: 0}
+  levelEntrances:
+  - {fileID: 0}
+  - {fileID: 0}

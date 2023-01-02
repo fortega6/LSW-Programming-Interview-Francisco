@@ -22,6 +22,7 @@ public class SceneLoaderManager : MonoBehaviour
     // Function that will be called from a listener
     public void OnLoadLevelRequest(LoadSceneRequest request)
     {
+        Debug.Log("0 " + request.scene.name);
         if (IsSceneAlreadyLoaded(request.scene))
         {
             // Level is already loaded. Activate it
@@ -32,12 +33,14 @@ public class SceneLoaderManager : MonoBehaviour
             // Level is not loaded
             if (request.loadingScreen)
             {
+                Debug.Log("1 " + request.scene.name);
                 // If a loading screen is requested, then show it and wait
                 this._pendingRequest = request;
                 this.loadingScreenUI.ToggleScreen(true);
             }
             else
             {
+                Debug.Log("2" + request.scene.name);
                 // If no loading screen requeste, load it ASAP
                 StartCoroutine(ProcessLevelLoading(request));
             }
@@ -66,11 +69,11 @@ public class SceneLoaderManager : MonoBehaviour
 
     private IEnumerator ProcessLevelLoading(LoadSceneRequest request)
     {
+        Debug.Log("ProcessLevelLoading");
         if (request.scene != null)
         {
             var currentLoadedLevel = SceneManager.GetActiveScene();
             SceneManager.UnloadSceneAsync(currentLoadedLevel);
-
             AsyncOperation loadSceneProcess = SceneManager.LoadSceneAsync(request.scene.name, LoadSceneMode.Additive);
 
             // Level is being loaded, it could take some seconds (or not). Waiting until is fully loaded
@@ -78,7 +81,7 @@ public class SceneLoaderManager : MonoBehaviour
             {
                 yield return null;
             }
-
+            Debug.Log("DONE");
             // Once the level is ready, activate it!
             ActivateLevel(request);
         }

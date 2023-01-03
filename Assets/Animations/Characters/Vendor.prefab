@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 8488022623223629132}
   - component: {fileID: 6320186063937748609}
   - component: {fileID: 2916504042957716476}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Interaction
   m_TagString: Interactable
   m_Icon: {fileID: 0}

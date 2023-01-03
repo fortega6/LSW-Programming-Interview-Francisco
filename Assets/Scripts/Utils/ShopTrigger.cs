@@ -12,6 +12,6 @@ public class ShopTrigger : MonoBehaviour
     public void TriggerShop()
     {
         Debug.Log("Interact");
-        //this.shopRequestEvent.Raise(this.shopInventory);
+        this.shopRequestEvent.Raise(this.shopInventory);
     }
 }

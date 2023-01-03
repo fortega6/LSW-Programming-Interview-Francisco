@@ -83,7 +83,8 @@ public class InventorySO : ScriptableObject
 
             if (consumableFound.amount == 0)
             {
-                return this.consumables.Remove(consumableFound);
+                return true;
+                //return this.consumables.Remove(consumableFound);
             }
         }
 

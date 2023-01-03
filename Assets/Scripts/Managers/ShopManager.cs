@@ -28,6 +28,8 @@ public class ShopManager : MonoBehaviour
 
         if (this.onShopOpened != null)
             this.onShopOpened.Invoke();
+
+        shopUI.gameObject.SetActive(true);
     }
 
     public void CloseShop()
@@ -45,7 +47,7 @@ public class ShopManager : MonoBehaviour
         if (itemId == 0 || itemId == 1) // Player is trying to buy a weapon
         {
             var itemPrice = this.weaponPrices[itemId];
-
+            Debug.Log(this.playerInventory.weapons.Count);
             if (this.playerInventory.gold < itemPrice) // No money no shopping
                 return;
 
@@ -62,7 +64,7 @@ public class ShopManager : MonoBehaviour
             var consumableIndex = itemId % 2;
             var itemPrice = this.consumablePrices[consumableIndex];
 
-            if (this.playerInventory.gold < itemPrice) // No money no shopping
+            if (this.playerInventory.gold < itemPrice || consumableIndex >= this._shopInventory.consumables.Count) // No money no shopping
                 return;
 
             var shopItem = this._shopInventory.consumables[consumableIndex];

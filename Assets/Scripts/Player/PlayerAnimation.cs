@@ -31,6 +31,6 @@ public class PlayerAnimation : MonoBehaviour
 
     public void OnSetSkinRequest(int index)
     {
-        //animator.runtimeAnimatorController = playerInventory.consumables[index].item.animator;
+        animator.runtimeAnimatorController = playerInventory.consumables[index].item.animator;
     }
 }

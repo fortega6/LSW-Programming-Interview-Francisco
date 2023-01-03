@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    [System.Serializable]
+    public class ShopInventoryUI
+    {
+        public Button shopFirstConsumableButton;
+        public Image shopFirstConsumableImage;
+        public TextMeshProUGUI shopFirstConsumableAmountText;
+        public TextMeshProUGUI shopFirstConsumableNameText;
+        public TextMeshProUGUI shopFirstConsumableCostText;
+    }
+
+    public ShopInventoryUI[] shopInventory;
+
     [Header("Dependencies")]
 
     // Shop Inventory
@@ -30,8 +42,41 @@ public class ShopUI : MonoBehaviour
     public TextMeshProUGUI shopSecondConsumableNameText;
     public TextMeshProUGUI shopSecondConsumableCostText;
 
+    public Button shopThirdConsumableButton;
+    public Image shopThirConsumableImage;
+    public TextMeshProUGUI shopThirConsumableAmountText;
+    public TextMeshProUGUI shopThirConsumableNameText;
+    public TextMeshProUGUI shopThirConsumableCostText;
+
+    public Button shopFourthConsumableButton;
+    public Image shopFourthConsumableImage;
+    public TextMeshProUGUI shopFourthConsumableAmountText;
+    public TextMeshProUGUI shopFourthConsumableNameText;
+    public TextMeshProUGUI shopFourthConsumableCostText;
+
+    public Button shopFifthConsumableButton;
+    public Image shopFifthConsumableImage;
+    public TextMeshProUGUI shopFifthConsumableAmountText;
+    public TextMeshProUGUI shopFifthConsumableNameText;
+    public TextMeshProUGUI shopFifthConsumableCostText;
+
+    public Button shopSixthConsumableButton;
+    public Image shopSixthConsumableImage;
+    public TextMeshProUGUI shopSixthConsumableAmountText;
+    public TextMeshProUGUI shopSixthConsumableNameText;
+    public TextMeshProUGUI shopSixthConsumableCostText;
+
 
     // Player Inventory
+
+    [System.Serializable]
+    public class PlayerInventoryUI
+    {
+        public Image playerFirstConsumableImage;
+        public TextMeshProUGUI playerFirstConsumableAmountText;
+    }
+
+    public PlayerInventoryUI[] playerInventoryUI;
 
     public Image playerFirstWeaponImage;
 
@@ -127,8 +172,22 @@ public class ShopUI : MonoBehaviour
 
     private void ConfigureShopConsumables()
     {
+        for (int index = 0; index < this._shopInventory.consumables.Count; index++)
+        {
+            var intem = shopInventory[index];
+            var consumableItem = this._shopInventory.consumables[index];
+            var consumablePrice = this._consumablePrices[index];
 
-        for (int consumableIndex = 0; consumableIndex < this._shopInventory.consumables.Count; consumableIndex++)
+            intem.shopFirstConsumableImage.sprite = consumableItem.item.icon;
+            intem.shopFirstConsumableImage.color = Color.white;
+            intem.shopFirstConsumableNameText.text = consumableItem.item.itemName;
+            intem.shopFirstConsumableAmountText.text = consumableItem.amount.ToString();
+            intem.shopFirstConsumableCostText.text = consumablePrice.ToString();
+            
+            intem.shopFirstConsumableButton.interactable = (consumableItem.amount > 0);
+        }
+
+        /*for (int consumableIndex = 0; consumableIndex < this._shopInventory.consumables.Count; consumableIndex++)
         {
             var consumableItem = this._shopInventory.consumables[consumableIndex];
             var consumablePrice = this._consumablePrices[consumableIndex];
@@ -154,7 +213,7 @@ public class ShopUI : MonoBehaviour
 
                 this.shopSecondConsumableButton.interactable = (consumableItem.amount > 0);
             }
-        }
+        }*/
     }
 
 
@@ -194,7 +253,29 @@ public class ShopUI : MonoBehaviour
 
     private void ConfigurePlayerConsumables()
     {
-        if (this._playerInventory.consumables.Count > 1)
+        int index = 0;
+        foreach (PlayerInventoryUI inventory in playerInventoryUI)
+        {
+            if (index < this._playerInventory.consumables.Count)
+            {
+                // Player has 1 weapon
+                var consumableItem = this._playerInventory.consumables[index];
+
+                inventory.playerFirstConsumableImage.sprite = consumableItem.item.icon;
+                inventory.playerFirstConsumableImage.color = Color.white;
+                inventory.playerFirstConsumableAmountText.text = consumableItem.amount.ToString();
+
+            }
+            else
+            {
+                inventory.playerFirstConsumableImage.sprite = null;
+                inventory.playerFirstConsumableImage.color = Color.clear;
+                inventory.playerFirstConsumableAmountText.text = null;
+            }
+            index++;
+        }
+
+        /*if (this._playerInventory.consumables.Count > 1)
         {
             // Player has 2 weapons
             var consumableItem = this._playerInventory.consumables[1];
@@ -224,7 +305,7 @@ public class ShopUI : MonoBehaviour
             this.playerFirstConsumableImage.sprite = null;
             this.playerFirstConsumableImage.color = Color.clear;
             this.playerFirstConsumableAmountText.text = null;
-        }
+        }*/
     }
 
 

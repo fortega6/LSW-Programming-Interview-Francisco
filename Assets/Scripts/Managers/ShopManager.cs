@@ -44,7 +44,7 @@ public class ShopManager : MonoBehaviour
     {
         // Weapons
 
-        if (itemId == 0 || itemId == 1) // Player is trying to buy a weapon
+        /*if (itemId == 0 || itemId == 1) // Player is trying to buy a weapon
         {
             var itemPrice = this.weaponPrices[itemId];
             Debug.Log(this.playerInventory.weapons.Count);
@@ -71,6 +71,16 @@ public class ShopManager : MonoBehaviour
             this.playerInventory.GetGold(itemPrice);
             this.playerInventory.AddConsumable(shopItem.item);
             this._shopInventory.RemoveConsumable(shopItem.item);
-        }
+        }*/
+
+        var itemPrice = this.consumablePrices[itemId];
+
+        if (this.playerInventory.gold < itemPrice || itemId >= this._shopInventory.consumables.Count) // No money no shopping
+            return;
+
+        var shopItem = this._shopInventory.consumables[itemId];
+        this.playerInventory.GetGold(itemPrice);
+        this.playerInventory.AddConsumable(shopItem.item);
+        this._shopInventory.RemoveConsumable(shopItem.item);
     }
 }

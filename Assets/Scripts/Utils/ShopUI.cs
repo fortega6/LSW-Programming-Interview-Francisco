@@ -72,6 +72,7 @@ public class ShopUI : MonoBehaviour
     [System.Serializable]
     public class PlayerInventoryUI
     {
+        public Button playerFirstConsumableButton;
         public Image playerFirstConsumableImage;
         public TextMeshProUGUI playerFirstConsumableAmountText;
     }
@@ -183,7 +184,7 @@ public class ShopUI : MonoBehaviour
             intem.shopFirstConsumableNameText.text = consumableItem.item.itemName;
             intem.shopFirstConsumableAmountText.text = consumableItem.amount.ToString();
             intem.shopFirstConsumableCostText.text = consumablePrice.ToString();
-            
+
             intem.shopFirstConsumableButton.interactable = (consumableItem.amount > 0);
         }
 
@@ -264,13 +265,14 @@ public class ShopUI : MonoBehaviour
                 inventory.playerFirstConsumableImage.sprite = consumableItem.item.icon;
                 inventory.playerFirstConsumableImage.color = Color.white;
                 inventory.playerFirstConsumableAmountText.text = consumableItem.amount.ToString();
-
+                inventory.playerFirstConsumableButton.interactable = (consumableItem.amount > 0);
             }
             else
             {
                 inventory.playerFirstConsumableImage.sprite = null;
                 inventory.playerFirstConsumableImage.color = Color.clear;
                 inventory.playerFirstConsumableAmountText.text = null;
+                inventory.playerFirstConsumableButton.interactable = false;
             }
             index++;
         }
@@ -337,7 +339,7 @@ public class ShopUI : MonoBehaviour
         this.shopFirstConsumableAmountText.text = "-";
         this.shopFirstConsumableCostText.text = "-";
         this.shopFirstConsumableButton.interactable = false;
-    
+
         this.shopSecondConsumableImage.sprite = null;
         this.shopSecondConsumableImage.color = Color.clear;
         this.shopSecondConsumableNameText.text = "-";

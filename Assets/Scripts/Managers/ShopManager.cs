@@ -1,3 +1,4 @@
+using ScriptableObjectArchitecture;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,10 @@ public class ShopManager : MonoBehaviour
     [Header("Dependencies")]
     public ShopUI shopUI;
     public InventorySO playerInventory;
+
+    [Header("Broadcasting on channels")]
+    public IntGameEvent changeSkinRequest;
+
 
     [Header("Shop Configuration")]
     public List<int> weaponPrices = new List<int>(2);
@@ -83,4 +88,10 @@ public class ShopManager : MonoBehaviour
         this.playerInventory.AddConsumable(shopItem.item);
         this._shopInventory.RemoveConsumable(shopItem.item);
     }
+
+    public void OnSetSkin(int index)
+    {
+        changeSkinRequest.Raise(index);
+    }
+
 }

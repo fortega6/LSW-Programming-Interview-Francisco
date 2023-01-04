@@ -18,4 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
   - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
   - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
-  consumables: []
+  consumables:
+  - item: {fileID: 11400000, guid: ce640600353c7584f9a40cd22bad8fa0, type: 2}
+    amount: 1

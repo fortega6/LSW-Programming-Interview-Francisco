@@ -18946,6 +18946,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178880901}
     m_Modifications:
+    - target: {fileID: 3110621527955703721, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -455
+      objectReference: {fileID: 0}
     - target: {fileID: 3110621529334410609, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -18976,7 +18980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3110621529359650612, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
       propertyPath: m_text
-      value: Slothes
+      value: 'clothes '
       objectReference: {fileID: 0}
     - target: {fileID: 3110621529359650612, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
       propertyPath: m_fontSize
@@ -18989,6 +18993,26 @@ PrefabInstance:
     - target: {fileID: 3110621529965276869, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
       propertyPath: m_fontSize
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110621529965276870, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.99999934
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110621529965276870, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0011835105
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110621529965276870, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 145.08997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110621529965276870, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -109.99988
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110621529965276870, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.136
       objectReference: {fileID: 0}
     - target: {fileID: 3793872391699977580, guid: 4bc7751a625a94608ad25560d537e3fb, type: 3}
       propertyPath: m_Pivot.x

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomersSpawner : MonoBehaviour
 {
-    const float waitingTime = 15;
+    const float waitingTime = 10;
 
     public List<Customer> customerList = new List<Customer>();
     public CustomerPooling customerPooling;

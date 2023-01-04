@@ -15,5 +15,5 @@ MonoBehaviour:
   icon: {fileID: -2103005498, guid: 2f67b3e5a510b6e47acf52f708edc276, type: 3}
   itemName: Outfit 3
   isUsing: 0
-  animator: {fileID: 9100000, guid: 97d206fe5c6b7ad46befcc279172f887, type: 2}
+  animator: {fileID: 9100000, guid: 54847892d4a64d444b7299884b1622cc, type: 2}
   healPower: 0

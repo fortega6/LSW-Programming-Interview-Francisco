@@ -43,6 +43,8 @@ public class ShopManager : MonoBehaviour
 
         if (this.onShopClosed != null)
             this.onShopClosed.Invoke();
+
+        shopUI.gameObject.SetActive(false);
     }
 
     public void BuyItem(int itemId)

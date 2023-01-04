@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -703398005, guid: 5b8102258a632c64491d1bc471f288f0, type: 3}
   itemName: POtion 2
+  isUsing: 0
+  animator: {fileID: 9100000, guid: 282376251228c6b4ead856eda0fc9fc4, type: 2}
   healPower: 3

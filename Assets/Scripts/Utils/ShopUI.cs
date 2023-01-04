@@ -257,6 +257,8 @@ public class ShopUI : MonoBehaviour
         int index = 0;
         foreach (PlayerInventoryUI inventory in playerInventoryUI)
         {
+            Debug.Log("idx" + index);
+            Debug.Log("Count" + this._playerInventory.consumables.Count);
             if (index < this._playerInventory.consumables.Count)
             {
                 // Player has 1 weapon

@@ -1752,7 +1752,7 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: 6fb206545444448df8d0c7123cd2c7f8, type: 2}
   changeOutfitRequest: {fileID: 11400000, guid: 35bf59d2c932a4c4eb41737ab37bc729, type: 2}
   weaponPrices: 3200000064000000
-  consumablePrices: 02000000030000000400000006000000
+  consumablePrices: 0a000000140000001e00000064000000
   onShopOpened:
     m_PersistentCalls:
       m_Calls: []

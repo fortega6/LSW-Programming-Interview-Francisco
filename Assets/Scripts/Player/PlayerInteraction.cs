@@ -15,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.CompareTag(interactableTag))
         {
+            Debug.Log("name" + collision.gameObject.name);
             var interactable = collision.GetComponent<Interactable>();
             this._interactable = interactable;
 

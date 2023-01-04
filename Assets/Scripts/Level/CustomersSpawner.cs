@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomersSpawner : MonoBehaviour
 {
-    const float waitingTime = 5f;
+    const float waitingTime = 120f;
 
     public List<Customer> customerList = new List<Customer>();
     public CustomerPooling customerPooling;
@@ -29,7 +29,7 @@ public class CustomersSpawner : MonoBehaviour
         player.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(waitingTime);
-        //StartCoroutine(Spawn());
+        StartCoroutine(Spawn());
     }
 
     private Transform GetLevelEntrance(LevelEntranceSO playerEntrance)

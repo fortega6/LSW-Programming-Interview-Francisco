@@ -44,10 +44,10 @@ public class Customer : MonoBehaviour
                 {
                     rb.velocity = _movement * _navigationTime;
                 }
-                else
+                /*else
                 {
                     rb.velocity = _movement * _navigationTime;
-                }
+                }*/
                 _navigationTime = 0;
             }
         }
@@ -60,8 +60,8 @@ public class Customer : MonoBehaviour
             _timeElapsed = 0;
             if (_target < wayPoints.Length)
                 _movement = (wayPoints[_target].transform.position - wayPoints[_target-1].transform.position).normalized;
-            else
-                _movement = (exitPoint.position - wayPoints[_target-1].transform.position).normalized;
+            /*else
+                _movement = (exitPoint.position - wayPoints[_target-1].transform.position).normalized;*/
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerPooling : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject [] prefab;
     public int amount = 10;
     public int instantiateGap = 5;
 
@@ -25,7 +25,7 @@ public class CustomerPooling : MonoBehaviour
 
     private void AddEnemyToPool()
     {
-        GameObject enemy = Instantiate(prefab, this.transform.position, Quaternion.identity, this.transform);
+        GameObject enemy = Instantiate(prefab[Random.Range(0, prefab.Length)], this.transform.position, Quaternion.identity, this.transform);
         enemy.SetActive(false);
     }
 

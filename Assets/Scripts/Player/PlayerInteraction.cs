@@ -30,6 +30,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (_interactable == null)
+            return;
+
         if (collision.CompareTag(interactableTag))
         {
             if (_interactable.isAutoInteract)

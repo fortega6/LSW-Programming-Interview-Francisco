@@ -17,9 +17,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96a20140d9d3c4dd28ba2f52f2eb3c69, type: 2}
   - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
   consumables:
-  - item: {fileID: 11400000, guid: dbac8a62919a04fa28a0347fc4431218, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: b74ba2cc8bd473147b9dbc95e48f1a8d, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: d5262f6cd110f4f74b3ac28ac99fc906, type: 2}
-    amount: 2
+  - item: {fileID: 11400000, guid: ce640600353c7584f9a40cd22bad8fa0, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 9631abc00b950f14c8e3ab8a1fc52bb5, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 0142f3082aadb8b4e85a8da628ec1e90, type: 2}
+    amount: 5
+  - item: {fileID: 11400000, guid: 549cfb92e8fc5b04f9250a19d4ca53de, type: 2}
+    amount: 5

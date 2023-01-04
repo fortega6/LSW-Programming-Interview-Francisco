@@ -19,7 +19,7 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetFloat("Vertical", movementInput.y);
     }
 
-    public void OnSetSkinRequest(int index)
+    public void OnSetOutfitRequest(int index)
     {
         var animatorOverrideController = new AnimatorOverrideController(playerInventory.consumables[index].item.animator);
         animator.runtimeAnimatorController = animatorOverrideController; ;

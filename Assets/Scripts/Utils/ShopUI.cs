@@ -187,34 +187,6 @@ public class ShopUI : MonoBehaviour
 
             intem.shopFirstConsumableButton.interactable = (consumableItem.amount > 0);
         }
-
-        /*for (int consumableIndex = 0; consumableIndex < this._shopInventory.consumables.Count; consumableIndex++)
-        {
-            var consumableItem = this._shopInventory.consumables[consumableIndex];
-            var consumablePrice = this._consumablePrices[consumableIndex];
-
-            if (consumableIndex == 0)
-            {
-                this.shopFirstConsumableImage.sprite = consumableItem.item.icon;
-                this.shopFirstConsumableImage.color = Color.white;
-                this.shopFirstConsumableNameText.text = consumableItem.item.itemName;
-                this.shopFirstConsumableAmountText.text = consumableItem.amount.ToString();
-                this.shopFirstConsumableCostText.text = consumablePrice.ToString();
-
-                this.shopFirstConsumableButton.interactable = (consumableItem.amount > 0);
-            }
-
-            if (consumableIndex == 1)
-            {
-                this.shopSecondConsumableImage.sprite = consumableItem.item.icon;
-                this.shopSecondConsumableImage.color = Color.white;
-                this.shopSecondConsumableNameText.text = consumableItem.item.itemName;
-                this.shopSecondConsumableAmountText.text = consumableItem.amount.ToString();
-                this.shopSecondConsumableCostText.text = consumablePrice.ToString();
-
-                this.shopSecondConsumableButton.interactable = (consumableItem.amount > 0);
-            }
-        }*/
     }
 
 
@@ -257,8 +229,6 @@ public class ShopUI : MonoBehaviour
         int index = 0;
         foreach (PlayerInventoryUI inventory in playerInventoryUI)
         {
-            Debug.Log("idx" + index);
-            Debug.Log("Count" + this._playerInventory.consumables.Count);
             if (index < this._playerInventory.consumables.Count)
             {
                 // Player has 1 weapon
@@ -278,38 +248,6 @@ public class ShopUI : MonoBehaviour
             }
             index++;
         }
-
-        /*if (this._playerInventory.consumables.Count > 1)
-        {
-            // Player has 2 weapons
-            var consumableItem = this._playerInventory.consumables[1];
-
-            this.playerSecondConsumableImage.sprite = consumableItem.item.icon;
-            this.playerSecondConsumableImage.color = Color.white;
-            this.playerSecondConsumableAmountText.text = consumableItem.amount.ToString();
-        }
-        else
-        {
-            this.playerSecondConsumableImage.sprite = null;
-            this.playerSecondConsumableImage.color = Color.clear;
-            this.playerSecondConsumableAmountText.text = null;
-        }
-
-        if (this._playerInventory.consumables.Count > 0)
-        {
-            // Player has 1 weapon
-            var consumableItem = this._playerInventory.consumables[0];
-
-            this.playerFirstConsumableImage.sprite = consumableItem.item.icon;
-            this.playerFirstConsumableImage.color = Color.white;
-            this.playerFirstConsumableAmountText.text = consumableItem.amount.ToString();
-        }
-        else
-        {
-            this.playerFirstConsumableImage.sprite = null;
-            this.playerFirstConsumableImage.color = Color.clear;
-            this.playerFirstConsumableAmountText.text = null;
-        }*/
     }
 
 

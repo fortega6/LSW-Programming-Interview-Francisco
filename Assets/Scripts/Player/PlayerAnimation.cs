@@ -8,16 +8,6 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Dependencies")]
     public Animator animator;
 
-    /*[System.Serializable]
-    public class Skin
-    {
-        public String key;
-        public Animator anim;
-    }
-    public List<Skin> skins;
-
-    public Animator anim;*/
-
     public InventorySO playerInventory;
 
     public void OnMovement(InputAction.CallbackContext value)

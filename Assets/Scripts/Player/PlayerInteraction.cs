@@ -17,6 +17,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             var interactable = collision.GetComponent<Interactable>();
             this._interactable = interactable;
+
+            if (_interactable.isAutoInteract)
+            {
+                EnableInteractable();
+            }
         }
 
         //this.interactionRequestEvent.Raise((_interactable != null));
@@ -26,6 +31,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.CompareTag(interactableTag))
         {
+            if (_interactable.isAutoInteract)
+            {
+                EnableInteractable();
+            }
             this._interactable = null;
         }
 

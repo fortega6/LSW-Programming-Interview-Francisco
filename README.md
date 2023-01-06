@@ -13,3 +13,4 @@ To interact, press the E key near the shopkeeper or move to the room curtain and
 ![Screenshot](Screenshot/Screenshot_6.png)
 # Clients simulation
 ![Screenshot](Screenshot/Screenshot_7.png)
+![Screenshot](Screenshot/Screenshot_8.png)

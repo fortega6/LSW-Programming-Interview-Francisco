@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class InventoryConsumable
+public class InventoryItem
 {
-    public ItemConsumableSO item;
+    public ItemOutfitSO item;
     public int amount;
 
-    public InventoryConsumable(ItemConsumableSO item, int amount)
+    public InventoryItem(ItemOutfitSO item, int amount)
     {
         this.item = item;
         this.amount = amount;
@@ -21,11 +21,8 @@ public class InventorySO : ScriptableObject
     [Header("Gold")]
     public int gold = 0;
 
-    [Header("Weapons")]
-    public List<ItemWeaponSO> weapons = new List<ItemWeaponSO>(2);
-
-    [Header("Consumables")]
-    public List<InventoryConsumable> consumables = new List<InventoryConsumable>(2);
+    [Header("Outfits")]
+    public List<InventoryItem> outfits = new List<InventoryItem>(2);
 
 
     // Public functions
@@ -40,25 +37,9 @@ public class InventorySO : ScriptableObject
         this.gold -= Mathf.Abs(gold);
     }
 
-    public bool AddWeapon(ItemWeaponSO weapon)
+    public bool AddConsumable(ItemOutfitSO consumable)
     {
-        if (!this.weapons.Contains(weapon) && this.weapons.Count < 2)
-        {
-            this.weapons.Add(weapon);
-            return true;
-        }
-
-        return false;
-    }
-
-    public bool RemoveWeapon(ItemWeaponSO weapon)
-    {
-        return this.weapons.Remove(weapon);
-    }
-
-    public bool AddConsumable(ItemConsumableSO consumable)
-    {
-        var consumableFound = this.consumables.Find((c) => { return c.item.itemName == consumable.itemName; });
+        var consumableFound = this.outfits.Find((c) => { return c.item.itemName == consumable.itemName; });
 
         if (consumableFound != null)
         {
@@ -66,16 +47,16 @@ public class InventorySO : ScriptableObject
         }
         else
         {
-            var newInventoryConsumable = new InventoryConsumable(consumable, 1);
-            this.consumables.Add(newInventoryConsumable);
+            var newInventoryConsumable = new InventoryItem(consumable, 1);
+            this.outfits.Add(newInventoryConsumable);
         }
 
         return true;
     }
 
-    public bool RemoveConsumable(ItemConsumableSO consumable)
+    public bool RemoveConsumable(ItemOutfitSO consumable)
     {
-        var consumableFound = this.consumables.Find((c) => { return c.item.itemName == consumable.itemName; });
+        var consumableFound = this.outfits.Find((c) => { return c.item.itemName == consumable.itemName; });
 
         if (consumableFound != null)
         {

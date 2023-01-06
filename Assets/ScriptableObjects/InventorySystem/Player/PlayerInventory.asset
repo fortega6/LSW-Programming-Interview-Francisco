@@ -13,11 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   gold: 500
-  weapons:
-  - {fileID: 11400000, guid: 96a20140d9d3c4dd28ba2f52f2eb3c69, type: 2}
-  - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
-  - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
-  - {fileID: 11400000, guid: 1f8167f7a576a49f183679ea4222d704, type: 2}
-  consumables:
+  outfits:
   - item: {fileID: 11400000, guid: ce640600353c7584f9a40cd22bad8fa0, type: 2}
     amount: 1

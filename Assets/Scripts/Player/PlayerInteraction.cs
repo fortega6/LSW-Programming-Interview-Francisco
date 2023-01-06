@@ -21,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
             var interactable = collision.GetComponent<Interactable>();
             this._interactable = interactable;
 
-            if (_interactable.isAutoInteract)
+            if (this._interactable.isAutoInteract)
             {
                 EnableInteractable();
             }
@@ -43,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (collision.CompareTag(interactableTag))
         {
-            if (_interactable.isAutoInteract)
+            if (this._interactable.isAutoInteract)
             {
                 EnableInteractable();
             }

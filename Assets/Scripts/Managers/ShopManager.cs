@@ -61,10 +61,10 @@ public class ShopManager : MonoBehaviour
     {
         var itemPrice = this.consumablePrices[itemId];
 
-        if (this.playerInventory.gold < itemPrice || itemId >= this._shopInventory.consumables.Count) // No money no shopping
+        if (this.playerInventory.gold < itemPrice || itemId >= this._shopInventory.outfits.Count) // No money no shopping
             return;
 
-        var shopItem = this._shopInventory.consumables[itemId];
+        var shopItem = this._shopInventory.outfits[itemId];
         this.playerInventory.GetGold(itemPrice);
         this.playerInventory.AddConsumable(shopItem.item);
         this._shopInventory.RemoveConsumable(shopItem.item);

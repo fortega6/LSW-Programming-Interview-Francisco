@@ -19,7 +19,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void OnSetOutfitRequest(int index)
     {
-        var animatorOverrideController = new AnimatorOverrideController(playerInventory.consumables[index].item.animator);
+        var animatorOverrideController = new AnimatorOverrideController(playerInventory.outfits[index].item.animator);
         animator.runtimeAnimatorController = animatorOverrideController; ;
     }
 }

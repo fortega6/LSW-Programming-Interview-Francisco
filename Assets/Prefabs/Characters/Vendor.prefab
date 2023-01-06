@@ -358,7 +358,7 @@ Animator:
   m_GameObject: {fileID: 6567301715103477758}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b1b2d969d356dd438378a6bb488d61f, type: 2}
+  m_Controller: {fileID: 9100000, guid: a9e33246e8757944f9b7143223050732, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -446,18 +446,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2916504042957716476}
         m_TargetAssemblyTypeName: ShopTrigger, Assembly-CSharp
         m_MethodName: TriggerShop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2916504042957716476}
-        m_TargetAssemblyTypeName: ShopTrigger, Assembly-CSharp
-        m_MethodName: TirggerTakingDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

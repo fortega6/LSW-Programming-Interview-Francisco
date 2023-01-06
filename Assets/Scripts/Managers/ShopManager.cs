@@ -28,22 +28,23 @@ public class ShopManager : MonoBehaviour
         if (this._shopInventory != null)
             return;
 
+        if (!shopUI.gameObject.activeSelf)
+        {
+            shopUI.gameObject.SetActive(true);
+        }
+        else
+        {
+            CloseShop();
+            return;
+        }
+
         this._shopInventory = shopInventory;
         this.shopUI.SetupHUD(this._shopInventory, this.weaponPrices, this.consumablePrices, this.playerInventory);
 
         if (this.onShopOpened != null)
             this.onShopOpened.Invoke();
 
-        if (!shopUI.gameObject.activeSelf)
-        {
-            Debug.Log("open");
-            shopUI.gameObject.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("close");
-            CloseShop();
-        }
+        
     }
 
     public void CloseShop()

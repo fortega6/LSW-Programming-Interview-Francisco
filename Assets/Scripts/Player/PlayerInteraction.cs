@@ -25,10 +25,9 @@ public class PlayerInteraction : MonoBehaviour
             {
                 EnableInteractable();
             }
-            if (animator != null)
+            else
             {
-                animator.gameObject.SetActive(true);
-                animator.Play("Talking");
+                this.animator.gameObject.SetActive(true);
             }
         }
 
@@ -37,8 +36,10 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("1 OnTriggerExit2D" + _interactable);
         if (_interactable == null)
             return;
+        Debug.Log("2 OnTriggerExit2D" + _interactable);
 
         if (collision.CompareTag(interactableTag))
         {
@@ -46,12 +47,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 EnableInteractable();
             }
-            this._interactable = null;
-
-            if (animator != null)
+            else
             {
-                animator.gameObject.SetActive(false);
+                this.animator.gameObject.SetActive(false);
             }
+            this._interactable = null;
         }
 
         //this.interactionRequestEvent.Raise((_interactable != null));

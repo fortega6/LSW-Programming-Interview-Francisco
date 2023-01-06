@@ -9,19 +9,26 @@ public class PlayerInteraction : MonoBehaviour
     //[Header("Broadcasting events")]
     //public BoolGameEvent interactionRequestEvent;
 
+    public Animator animator;
+
     private Interactable _interactable;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(interactableTag))
         {
-            Debug.Log("name" + collision.gameObject.name);
+            ///Debug.Log("name" + collision.gameObject.name);
             var interactable = collision.GetComponent<Interactable>();
             this._interactable = interactable;
 
             if (_interactable.isAutoInteract)
             {
                 EnableInteractable();
+            }
+            if (animator != null)
+            {
+                animator.gameObject.SetActive(true);
+                animator.Play("Talking");
             }
         }
 
@@ -40,6 +47,11 @@ public class PlayerInteraction : MonoBehaviour
                 EnableInteractable();
             }
             this._interactable = null;
+
+            if (animator != null)
+            {
+                animator.gameObject.SetActive(false);
+            }
         }
 
         //this.interactionRequestEvent.Raise((_interactable != null));

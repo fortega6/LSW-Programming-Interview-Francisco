@@ -464,10 +464,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 178323457, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8b1b2d969d356dd438378a6bb488d61f, type: 2}
     - target: {fileID: 6567301715103477755, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -515,10 +511,6 @@ PrefabInstance:
     - target: {fileID: 6567301715103477758, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
       propertyPath: m_Name
       value: Shopkeeper 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236277372620164250, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
@@ -4252,6 +4244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shopkeeper 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6567301715103477758, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
 --- !u!1 &236837378
@@ -5425,6 +5421,10 @@ PrefabInstance:
     - target: {fileID: 6567301715103477758, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
       propertyPath: m_Name
       value: Shopkeeper 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567301715103477758, guid: 732e1936704117f4b90487b42c2faa08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 732e1936704117f4b90487b42c2faa08, type: 3}

@@ -10,6 +10,8 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("Interact");
+
         if (onInteract != null)
             onInteract.Invoke();
     }

@@ -1,5 +1,5 @@
 using UnityEngine;
-using ScriptableObjectArchitecture;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.CompareTag(interactableTag))
         {
+            Debug.Log("1 OnTriggerEnter2D " + collision.gameObject.name);
             ///Debug.Log("name" + collision.gameObject.name);
             var interactable = collision.GetComponent<Interactable>();
             this._interactable = interactable;
@@ -28,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
             else
             {
                 this.animator.gameObject.SetActive(true);
+                animator.Play("Talking");
             }
         }
 
@@ -36,10 +38,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("1 OnTriggerExit2D" + _interactable);
         if (_interactable == null)
             return;
-        Debug.Log("2 OnTriggerExit2D" + _interactable);
 
         if (collision.CompareTag(interactableTag))
         {
@@ -54,6 +54,7 @@ public class PlayerInteraction : MonoBehaviour
             this._interactable = null;
         }
 
+
         //this.interactionRequestEvent.Raise((_interactable != null));
     }
 
@@ -63,4 +64,9 @@ public class PlayerInteraction : MonoBehaviour
             this._interactable.Interact();
     }
 
+    public void EnableInteractable(InputAction.CallbackContext context)
+    {
+        if (context.performed && this._interactable != null)
+            this._interactable.Interact();
+    }
 }

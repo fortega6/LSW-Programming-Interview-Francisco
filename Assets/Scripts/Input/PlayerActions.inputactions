@@ -84,7 +84,7 @@
                     "name": "",
                     "id": "dfd28fac-a27d-4b27-bcf8-f2700569c158",
                     "path": "<Keyboard>/e",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Interact",

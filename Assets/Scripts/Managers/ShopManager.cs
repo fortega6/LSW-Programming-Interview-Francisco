@@ -26,13 +26,6 @@ public class ShopManager : MonoBehaviour
     public void OpenShop(InventorySO shopInventory)
     {
         if (this._shopInventory != null)
-            return;
-
-        if (!shopUI.gameObject.activeSelf)
-        {
-            shopUI.gameObject.SetActive(true);
-        }
-        else
         {
             CloseShop();
             return;
@@ -44,7 +37,7 @@ public class ShopManager : MonoBehaviour
         if (this.onShopOpened != null)
             this.onShopOpened.Invoke();
 
-        
+        shopUI.gameObject.SetActive(true);
     }
 
     public void CloseShop()

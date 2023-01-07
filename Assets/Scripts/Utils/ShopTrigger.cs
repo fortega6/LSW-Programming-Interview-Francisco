@@ -13,12 +13,13 @@ public class ShopTrigger : MonoBehaviour
 
     public void TriggerShop()
     {
-        Debug.Log("Interact");
+        Debug.Log("TriggerShop");
         this.shopRequestEvent.Raise(this.shopInventory);
     }
 
     public void TirggerTakingDialog()
     {
+        Debug.Log("TirggerTakingDialog " + animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             animator.Play("Talking");

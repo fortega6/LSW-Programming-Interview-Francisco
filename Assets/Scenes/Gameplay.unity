@@ -525,6 +525,7 @@ MonoBehaviour:
   shopUI: {fileID: 6221892963631034941}
   playerInventory: {fileID: 11400000, guid: 6fb206545444448df8d0c7123cd2c7f8, type: 2}
   changeOutfitRequest: {fileID: 11400000, guid: 35bf59d2c932a4c4eb41737ab37bc729, type: 2}
+  dialogRequest: {fileID: 11400000, guid: 7d08aa8564a25b04d8ca3da382052827, type: 2}
   weaponPrices: 3200000064000000
   consumablePrices: 0a000000140000001e00000064000000
   onShopOpened:

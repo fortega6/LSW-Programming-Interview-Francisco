@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("Broadcasting on channels")]
     public IntGameEvent changeOutfitRequest;
+    public BoolGameEvent dialogRequest;
 
 
     [Header("Shop Configuration")]
@@ -26,10 +27,8 @@ public class ShopManager : MonoBehaviour
     public void OpenShop(InventorySO shopInventory)
     {
         if (this._shopInventory != null)
-        {
-            CloseShop();
             return;
-        }
+
 
         this._shopInventory = shopInventory;
         this.shopUI.SetupHUD(this._shopInventory, this.weaponPrices, this.consumablePrices, this.playerInventory);
@@ -48,6 +47,7 @@ public class ShopManager : MonoBehaviour
             this.onShopClosed.Invoke();
 
         shopUI.gameObject.SetActive(false);
+        dialogRequest.Raise(false);
     }
 
     public void BuyItem(int itemId)

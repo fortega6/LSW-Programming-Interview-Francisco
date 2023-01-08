@@ -38,19 +38,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        this.animator.gameObject.SetActive(false);
+
         if (_interactable == null)
             return;
 
         if (collision.CompareTag(interactableTag))
         {
-            if (this._interactable.isAutoInteract)
-            {
-                EnableInteractable();
-            }
-            else
-            {
-                this.animator.gameObject.SetActive(false);
-            }
             this._interactable = null;
         }
 

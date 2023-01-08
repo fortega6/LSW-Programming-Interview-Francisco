@@ -17,6 +17,18 @@ public class ShopTrigger : MonoBehaviour
         this.shopRequestEvent.Raise(this.shopInventory);
     }
 
+    public void TirggerTakingDialog(bool isTalking)
+    {
+        if (isTalking)
+        {
+            animator.Play("Talking");
+        }
+        else
+        {
+            animator.Play("Idle");
+        }
+    }
+
     public void TirggerTakingDialog()
     {
         Debug.Log("TirggerTakingDialog " + animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));

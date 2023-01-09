@@ -17,7 +17,7 @@ public class CustomersSpawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        /*LevelEntrance levelEntrance = levelEntrances[Random.Range(0, levelEntrances.Length)];
+        LevelEntrance levelEntrance = levelEntrances[Random.Range(0, levelEntrances.Length)];
         Customer player = customerPooling.GetEnemyFromPool().GetComponent<Customer>();
 
         player.Target = 0;
@@ -25,7 +25,7 @@ public class CustomersSpawner : MonoBehaviour
         Transform entrance = GetLevelEntrance(levelEntrance.entrance);
         player.transform.position = levelEntrance.transform.position;
         player.Movement = (player.wayPoints[0].transform.position - levelEntrance.transform.position).normalized;
-        player.gameObject.SetActive(true);*/
+        player.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(waitingTime);
         StartCoroutine(Spawn());

@@ -6,4 +6,5 @@ public abstract class ItemSO : ScriptableObject
     public string itemName;
     public bool isUsing;
     public RuntimeAnimatorController animator;
+    public bool active = false;
 }

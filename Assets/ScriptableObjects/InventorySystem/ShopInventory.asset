@@ -15,10 +15,12 @@ MonoBehaviour:
   gold: 0
   outfits:
   - item: {fileID: 11400000, guid: ce640600353c7584f9a40cd22bad8fa0, type: 2}
-    amount: 5
+    amount: 10
   - item: {fileID: 11400000, guid: 9631abc00b950f14c8e3ab8a1fc52bb5, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: 0142f3082aadb8b4e85a8da628ec1e90, type: 2}
-    amount: 3
-  - item: {fileID: 11400000, guid: 549cfb92e8fc5b04f9250a19d4ca53de, type: 2}
     amount: 5
+  - item: {fileID: 11400000, guid: 0142f3082aadb8b4e85a8da628ec1e90, type: 2}
+    amount: 8
+  - item: {fileID: 11400000, guid: 549cfb92e8fc5b04f9250a19d4ca53de, type: 2}
+    amount: 15
+  - item: {fileID: 11400000, guid: 4a398aa6c996d7449bfabc3eae7dbcb8, type: 2}
+    amount: 100

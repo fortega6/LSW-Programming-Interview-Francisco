@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class ShopUI : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class ShopUI : MonoBehaviour
     [System.Serializable]
     public class ShopInventoryUI
     {
-        public Button shopFirstConsumableButton;
-        public Image shopFirstConsumableImage;
-        public TextMeshProUGUI shopFirstConsumableAmountText;
-        public TextMeshProUGUI shopFirstConsumableNameText;
-        public TextMeshProUGUI shopFirstConsumableCostText;
+        public Button shopFirstItemButton;
+        public Image shopFirstOutfitImage;
+        public TextMeshProUGUI shopFirstOutfitAmountText;
+        public TextMeshProUGUI shopFirstOutfitNameText;
+        public TextMeshProUGUI shopFirstOutfitCostText;
     }
 
     [Header("Dependencies")]
@@ -26,44 +27,42 @@ public class ShopUI : MonoBehaviour
     [System.Serializable]
     public class PlayerInventoryUI
     {
-        public Button playerFirstConsumableButton;
-        public Image playerFirstConsumableImage;
-        public TextMeshProUGUI playerFirstConsumableAmountText;
+        public Button playerFirstOutfitButton;
+        public Image playerFirstOutfitImage;
+        public TextMeshProUGUI playerFirstOutfitAmountText;
+        public Button removeOutfitButton;
     }
 
     public PlayerInventoryUI[] playerInventoryUI;
     public TextMeshProUGUI playerGoldText;
 
-
     private InventorySO _shopInventory;
-    private List<int> _weaponPrices;
-    private List<int> _consumablePrices;
+    private List<int> _outfitPrices;
     private InventorySO _playerInventory;
 
     // Public functions
 
-    public void SetupHUD(InventorySO shopInventory, List<int> weaponPrices, List<int> consumablePrices, InventorySO playerInventory)
+    public void SetupHUD(InventorySO shopInventory, List<int> outfitPrices, InventorySO playerInventory)
     {
         this.ResetShopHUD();
         this.ResetPlayerHUD();
 
         this._shopInventory = shopInventory;
-        this._weaponPrices = weaponPrices;
-        this._consumablePrices = consumablePrices;
+        this._outfitPrices = outfitPrices;
         this._playerInventory = playerInventory;
 
         // Disable buttons just in case
 
         foreach (ShopInventoryUI inventory in this.shopInventory)
         {
-            inventory.shopFirstConsumableButton.interactable = false;
+            inventory.shopFirstItemButton.interactable = false;
         }
 
         // Shop items
-        this.ConfigureShopConsumables();
+        this.ConfigureShopOutfits();
 
         // Player items
-        this.ConfigurePlayerConsumables();
+        this.ConfigurePlayerOutfits();
         this.ConfigurePlayerGold();
     }
 
@@ -76,87 +75,82 @@ public class ShopUI : MonoBehaviour
         if (this._shopInventory == null || this._playerInventory == null)
             return;
 
-        this.ConfigureShopConsumables();
+        this.ConfigureShopOutfits();
 
-        this.ConfigurePlayerConsumables();
+        this.ConfigurePlayerOutfits();
         this.ConfigurePlayerGold();
     }
 
-    private void ConfigureShopConsumables()
+    private void ConfigureShopOutfits()
     {
         for (int index = 0; index < this._shopInventory.outfits.Count; index++)
         {
             var intem = shopInventory[index];
-            var consumableItem = this._shopInventory.outfits[index];
-            var consumablePrice = this._consumablePrices[index];
+            var outfitItem = this._shopInventory.outfits[index];
+            var outfitPrice = this._outfitPrices[index];
 
-            intem.shopFirstConsumableImage.sprite = consumableItem.item.icon;
-            intem.shopFirstConsumableImage.color = Color.white;
-            intem.shopFirstConsumableNameText.text = consumableItem.item.itemName;
-            intem.shopFirstConsumableAmountText.text = consumableItem.amount.ToString();
-            intem.shopFirstConsumableCostText.text = consumablePrice.ToString();
+            intem.shopFirstOutfitImage.sprite = outfitItem.item.icon;
+            intem.shopFirstOutfitImage.color = Color.white;
+            intem.shopFirstOutfitNameText.text = outfitItem.item.itemName;
+            intem.shopFirstOutfitAmountText.text = outfitItem.amount.ToString();
+            intem.shopFirstOutfitCostText.text = outfitPrice.ToString();
 
-            intem.shopFirstConsumableButton.interactable = (consumableItem.amount > 0);
+            intem.shopFirstItemButton.interactable = (outfitItem.amount > 0);
         }
     }
 
-    private void ConfigurePlayerConsumables()
+    private void ConfigurePlayerOutfits()
     {
-        int index = 0;
-        foreach (PlayerInventoryUI inventory in playerInventoryUI)
+        int i = 0;
+        foreach (var inventoryUI in playerInventoryUI)
         {
-            if (index < this._playerInventory.outfits.Count)
-            {
-                // Player has 1 weapon
-                var consumableItem = this._playerInventory.outfits[index];
+            inventoryUI.playerFirstOutfitImage.sprite = null;
+            inventoryUI.playerFirstOutfitImage.color = Color.clear;
+            inventoryUI.playerFirstOutfitAmountText.text = null;
+            inventoryUI.playerFirstOutfitButton.interactable = false;
+            inventoryUI.removeOutfitButton.interactable = false;
 
-                inventory.playerFirstConsumableImage.sprite = consumableItem.item.icon;
-                inventory.playerFirstConsumableImage.color = Color.white;
-                inventory.playerFirstConsumableAmountText.text = consumableItem.amount.ToString();
-                inventory.playerFirstConsumableButton.interactable = (consumableItem.amount > 0);
-            }
-            else
+            if (i < this._playerInventory.outfits.Count)
             {
-                inventory.playerFirstConsumableImage.sprite = null;
-                inventory.playerFirstConsumableImage.color = Color.clear;
-                inventory.playerFirstConsumableAmountText.text = null;
-                inventory.playerFirstConsumableButton.interactable = false;
+                // Player has 1 outfit
+                var outfitItem = this._playerInventory.outfits[i];
+                if (outfitItem.item.active)
+                {
+                    inventoryUI.playerFirstOutfitImage.sprite = outfitItem.item.icon;
+                    inventoryUI.playerFirstOutfitImage.color = Color.white;
+                    inventoryUI.playerFirstOutfitAmountText.text = outfitItem.amount.ToString();
+                    inventoryUI.removeOutfitButton.interactable = inventoryUI.playerFirstOutfitButton.interactable = (outfitItem.amount > 0);
+                }
             }
-            index++;
+            i++;
         }
     }
-
-
 
     private void ConfigurePlayerGold()
     {
         this.playerGoldText.text = this._playerInventory.gold.ToString();
     }
 
-
-
     private void ResetShopHUD()
     {
         foreach (ShopInventoryUI inventory in shopInventory)
         {
 
-            inventory.shopFirstConsumableImage.sprite = null;
-            inventory.shopFirstConsumableImage.color = Color.clear;
-            inventory.shopFirstConsumableNameText.text = "-";
-            inventory.shopFirstConsumableCostText.text = "-";
-            inventory.shopFirstConsumableButton.interactable = false;
+            inventory.shopFirstOutfitImage.sprite = null;
+            inventory.shopFirstOutfitImage.color = Color.clear;
+            inventory.shopFirstOutfitNameText.text = "-";
+            inventory.shopFirstOutfitCostText.text = "-";
+            inventory.shopFirstItemButton.interactable = false;
         }
     }
-
-
 
     private void ResetPlayerHUD()
     {
         foreach (PlayerInventoryUI inventory in playerInventoryUI)
         {
-            inventory.playerFirstConsumableImage.sprite = null;
-            inventory.playerFirstConsumableImage.color = Color.clear;
-            inventory.playerFirstConsumableAmountText.text = null;
+            inventory.playerFirstOutfitImage.sprite = null;
+            inventory.playerFirstOutfitImage.color = Color.clear;
+            inventory.playerFirstOutfitAmountText.text = null;
         }
 
         this.playerGoldText.text = "-";

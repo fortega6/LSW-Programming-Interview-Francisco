@@ -15,14 +15,15 @@ public class ShopManager : MonoBehaviour
 
 
     [Header("Shop Configuration")]
-    public List<int> weaponPrices = new List<int>(2);
-    public List<int> consumablePrices = new List<int>(2);
+    public List<int> outfitPrices = new List<int>(2);
 
     [Header("Action events")]
     public UnityEvent onShopOpened;
     public UnityEvent onShopClosed;
 
     private InventorySO _shopInventory;
+
+    private int _currItemId;
 
     public void OpenShop(InventorySO shopInventory)
     {
@@ -31,7 +32,7 @@ public class ShopManager : MonoBehaviour
 
 
         this._shopInventory = shopInventory;
-        this.shopUI.SetupHUD(this._shopInventory, this.weaponPrices, this.consumablePrices, this.playerInventory);
+        this.shopUI.SetupHUD(this._shopInventory, this.outfitPrices, this.playerInventory);
 
         if (this.onShopOpened != null)
             this.onShopOpened.Invoke();
@@ -52,20 +53,30 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem(int itemId)
     {
-        var itemPrice = this.consumablePrices[itemId];
+        var itemPrice = this.outfitPrices[itemId];
+        var shopItem = this._shopInventory.outfits[itemId];
 
         if (this.playerInventory.gold < itemPrice || itemId >= this._shopInventory.outfits.Count) // No money no shopping
             return;
 
-        var shopItem = this._shopInventory.outfits[itemId];
+        if (!shopItem.item.active && this.playerInventory.CountOutfitsActives() >= this.shopUI.playerInventoryUI.Length)
+            return;
+
         this.playerInventory.GetGold(itemPrice);
-        this.playerInventory.AddConsumable(shopItem.item);
-        this._shopInventory.RemoveConsumable(shopItem.item);
+        this.playerInventory.AddOutfit(shopItem.item);
+        this._shopInventory.RemoveOutfit(shopItem.item);
+        this._currItemId = itemId;
     }
 
-    public void OnSetOutfit(int index)
+    public void RemoveItem(int itemId)
     {
-        changeOutfitRequest.Raise(index);
+        var shopItem = this.playerInventory.outfits[itemId];
+        shopItem.item.active = false;
+        this.playerInventory.MoveToEnd(itemId);
     }
 
+    public void OnSetOutfit(int itemId)
+    {
+        changeOutfitRequest.Raise(itemId);
+    }
 }

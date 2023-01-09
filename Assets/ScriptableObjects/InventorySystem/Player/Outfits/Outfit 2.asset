@@ -16,4 +16,4 @@ MonoBehaviour:
   itemName: Outfit 2
   isUsing: 0
   animator: {fileID: 9100000, guid: 282376251228c6b4ead856eda0fc9fc4, type: 2}
-  healPower: 0
+  active: 0

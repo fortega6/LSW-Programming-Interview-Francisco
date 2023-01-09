@@ -37,38 +37,104 @@ public class InventorySO : ScriptableObject
         this.gold -= Mathf.Abs(gold);
     }
 
-    public bool AddConsumable(ItemOutfitSO consumable)
+    public bool findItem(ItemOutfitSO outfit)
     {
-        var consumableFound = this.outfits.Find((c) => { return c.item.itemName == consumable.itemName; });
+        return this.outfits.Find((c) => { return c.item.itemName == outfit.itemName; }) != null;
+    }
 
-        if (consumableFound != null)
+    public bool AddOutfit(ItemOutfitSO outfit)
+    {
+        var outfitFound = this.outfits.Find((c) => { return c.item.itemName == outfit.itemName; });
+
+        if (outfitFound != null)
         {
-            consumableFound.amount += 1;
+            outfitFound.amount += 1;
+
+            if (!outfitFound.item.active)
+            {
+                if (CountOutfitsActives() < outfits.Count)
+                {
+                    Swap(CountOutfitsActives(), getItemId(outfit));
+                    outfitFound.item.active = true;
+                }
+            }
         }
         else
         {
-            var newInventoryConsumable = new InventoryItem(consumable, 1);
-            this.outfits.Add(newInventoryConsumable);
+            var newInventoryOutfit = new InventoryItem(outfit, 1);
+            this.outfits.Add(newInventoryOutfit);
+
+            if (CountOutfitsActives() < outfits.Count - 1)
+            {
+                Swap(CountOutfitsActives(), getItemId(outfit));
+            }
+            newInventoryOutfit.item.active = true;
         }
 
         return true;
     }
 
-    public bool RemoveConsumable(ItemOutfitSO consumable)
+    public int CountOutfitsActives()
     {
-        var consumableFound = this.outfits.Find((c) => { return c.item.itemName == consumable.itemName; });
-
-        if (consumableFound != null)
+        int count = 0;
+        foreach (var outfit in outfits)
         {
-            consumableFound.amount -= 1;
+            if (outfit.item.active)
+                count++;
+        }
+        return count;
+    }
+    public bool RemoveOutfit(ItemOutfitSO outfit)
+    {
+        var OutfitFound = this.outfits.Find((c) => { return c.item.itemName == outfit.itemName; });
 
-            if (consumableFound.amount == 0)
+        if (OutfitFound != null)
+        {
+            OutfitFound.amount -= 1;
+
+            if (OutfitFound.amount == 0)
             {
                 return true;
-                //return this.consumables.Remove(consumableFound);
+                //return this.Outfits.Remove(OutfitFound);
             }
         }
 
         return false;
+    }
+
+    public void MoveToEnd(int itemId)
+    {
+        if (itemId < outfits.Count)
+        {
+            var tmpOutfit = this.outfits[itemId]; 
+            for (int i = itemId; i < outfits.Count - 1; i++)
+            {
+                outfits[i] = this.outfits[i+1];
+            }
+            this.outfits[outfits.Count-1] = tmpOutfit;
+        }
+    }
+
+    public void Swap(int pos1, int pos2)
+    {
+        var temp = outfits[pos1]; // Copy the first position's element
+        outfits[pos1] = outfits[pos2]; // Assign to the second element
+        outfits[pos2] = temp; // Assign to the first element
+    }
+
+    public int getItemId(ItemSO item)
+    {
+        int id = 0;
+
+        foreach(var outfit in outfits)
+        {
+            if (item.name == outfit.item.name)
+            {
+                return id;
+            }
+            id++;
+        }
+
+        return id;
     }
 }

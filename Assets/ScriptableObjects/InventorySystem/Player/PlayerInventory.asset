@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cd19d72bb69f248a883d3160b527d6, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  gold: 500
+  gold: 1000
   outfits:
   - item: {fileID: 11400000, guid: ce640600353c7584f9a40cd22bad8fa0, type: 2}
     amount: 1

@@ -12,24 +12,24 @@ public class CustomerPooling : MonoBehaviour
     void Start()
     {
         InitializePool();
-        InvokeRepeating("GetEnemyFromPool", 1f, instantiateGap);
+        InvokeRepeating("GetCustomerFromPool", 1f, instantiateGap);
     }
 
     public void InitializePool()
     {
         for (int i = 0; i < amount; i++)
         {
-            AddEnemyToPool();
+            AddCustomerToPool();
         }
     }
 
-    private void AddEnemyToPool()
+    private void AddCustomerToPool()
     {
         GameObject enemy = Instantiate(prefab[Random.Range(0, prefab.Length)], this.transform.position, Quaternion.identity, this.transform);
         enemy.SetActive(false);
     }
 
-    public GameObject GetEnemyFromPool()
+    public GameObject GetCustomerFromPool()
     {
         GameObject enemy = null;
 
@@ -44,11 +44,9 @@ public class CustomerPooling : MonoBehaviour
 
         if (enemy == null)
         {
-            AddEnemyToPool();
+            AddCustomerToPool();
             enemy = transform.GetChild(transform.childCount - 1).gameObject;
         }
-
-        //enemy.transform.position = this.transform.position;
         
         return enemy;
     }

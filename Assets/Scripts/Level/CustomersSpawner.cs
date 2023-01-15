@@ -18,7 +18,7 @@ public class CustomersSpawner : MonoBehaviour
     private IEnumerator Spawn()
     {
         LevelEntrance levelEntrance = levelEntrances[Random.Range(0, levelEntrances.Length)];
-        Customer player = customerPooling.GetEnemyFromPool().GetComponent<Customer>();
+        Customer player = customerPooling.GetCustomerFromPool().GetComponent<Customer>();
 
         player.Target = 0;
         player.wayPoints = levelEntrance.GetRandomPath();
